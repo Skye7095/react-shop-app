@@ -1,20 +1,22 @@
-.card_list {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 60px;
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styles from './CardList.module.scss'
+import { fetchProducts } from '../../../store/products/products.slice'
 
-  li {
-      border-radius: 4px;
-  }
+const CardList = () => {
 
-  @media (min-width: 667px) {
-      flex-flow: row wrap;
-      align-items: flex-start;
-  }
+  const dispatch = useDispatch()
+  const {products} = useSelector(state => state.productsSlice)
 
-  @media (min-width: 785px) {
-      justify-content: flex-start;
-  }
+  useEffect(() => {
+    dispatch(fetchProducts(styles))
+  }, [])
+
+  return (
+    <ul className={styles.card_list}>
+      {products.map(product => <CardItem key={product.id} item={product}/>)}
+    </ul>
+  )
 }
+
+export default CardList
