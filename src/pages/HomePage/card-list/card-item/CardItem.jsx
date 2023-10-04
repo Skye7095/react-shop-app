@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const CardItem = ({item}) => {
-  console.log(item)
   const {products} = useSelector(state => state.cartSlice)
   const productMatching = products.some((product) => products.id === item.id)
 
