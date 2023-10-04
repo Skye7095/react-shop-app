@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {fetchProduct} from '../../store/products/product.slice'
 import styles from './DetailPage.module.scss'
 import Loader from '../../components/loader/Loader'
+import { addToCart } from '../../store/cart/cart.slice'
 
 const DetailPage = () => {
 
@@ -15,6 +16,10 @@ const DetailPage = () => {
   const {product, isLoading} = useSelector((state) => state.productSlice)
   const {products} = useSelector((state) => state.cartSlice)
   const productMatching = products.some((product) => product.id === product.id)
+  console.log(product.id, productMatching)
+  const addItemToCart = () => {
+    dispatch(addToCart(product))
+  }
 
   useEffect(() => {
     dispatch(fetchProduct(productId))
@@ -34,7 +39,9 @@ const DetailPage = () => {
             <h4>$ {product.price}</h4>
             <p>{product.description}</p>
             <div>
-              <button disabled={productMatching}>
+              <button disabled={productMatching}
+                onClick={() => !productMatching && addItemToCart()}  
+              >
                 {productMatching ? '장바구니에 담긴 제품' : '장바구니에 담기'}
               </button>
               <Link to='/cart'>장바구니로 이동</Link>
