@@ -15,7 +15,7 @@ const DetailPage = () => {
 
   const {product, isLoading} = useSelector((state) => state.productSlice)
   const {products} = useSelector((state) => state.cartSlice)
-  const productMatching = products.some((product) => product.id === product.id)
+  const productMatching = products.some((product) => product.id === productId)
   console.log(product.id, productMatching)
   const addItemToCart = () => {
     dispatch(addToCart(product))
