@@ -5,19 +5,19 @@ JSON.parse(localStorage.getItem('user')) :
 {email: "", token: "", id: ""}
 
 export const userSlice = createSlice({
-  name: UserActivation,
+  name: 'user',
   initialState,
   reducers: {
-    setUser: () =>{
+    setUser: (state, action) =>{
       state.email = action.payload.email
-      state.toekn = action.payload.token
+      state.token = action.payload.token
       state.id = action.payload.id
 
       localStorage.setItem('user', JSON.stringify(state))
     },
     removeUser: (state) => {
       state.email = ""
-      state.toekn = ""
+      state.token = ""
       state.id = ""
 
       localStorage.setItem('user', JSON.stringify(state))

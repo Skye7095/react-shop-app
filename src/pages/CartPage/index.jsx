@@ -11,7 +11,7 @@ const CartPage = () => {
   return (
     <div className='page'>
       {!products.length ? (
-        <CartEmpty title={title} />
+        <CartEmpty title='Cart' />
       ) : (
         <div className='container'>
           <h1>장바구니</h1>

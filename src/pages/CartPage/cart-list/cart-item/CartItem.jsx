@@ -23,7 +23,6 @@ const CartItem = ({item}) => {
 
   return (
     <div className={styles.cart_item}>
-      CartItem
       <Link to={`/card/${item.id}`} >
         <img src={item.image} alt="product card" />
       </Link>

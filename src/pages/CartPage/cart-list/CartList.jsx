@@ -9,10 +9,9 @@ const CartList = () => {
 
   return (
     <div className={styles.cart_list}>
-      CartList
-      {products.map((product) => {
+      {products.map((product) => (
         <CartItem key={product.id} item={product} />
-      })}
+      ))}
     </div>
   )
 }
