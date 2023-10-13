@@ -9,7 +9,6 @@ export const postOrder = createAsyncThunk(
 
       thunkAPI.dispatch(sendOrder())
     } catch (error) {
-      console.log(error)
       return thunkAPI.rejectWithValue("Error sending order")
     }
   }
