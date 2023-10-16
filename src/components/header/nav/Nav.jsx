@@ -8,6 +8,7 @@ import app from '../../../firebase'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../../../store/user/user.slice'
 import { removeUserId } from '../../../store/cart/cart.slice'
+import NavCartBlock from './nav-cart-block/NavCartBlock'
 
 const Nav = () => {
 
@@ -38,6 +39,10 @@ const Nav = () => {
               <FiShoppingCart />
             </Link>
             {products.length > 0 && <b>{products.length}</b>}
+            {products.length > 0 && 
+              <div className={styles.nav_hover_cart}>
+                <NavCartBlock />
+              </div>}
           </div>
         </li>
         <li>
